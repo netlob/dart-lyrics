@@ -26,37 +26,30 @@ class Lyrics {
     // try multiple queries
     try {
       lyrics =
-          (await http.get(Uri.encodeFull('${_url}$artist $track lyrics'))).body;
+          (await http.get(Uri.encodeFull('${_url}$track by $artist lyrics')))
+              .body;
       lyrics = lyrics.split(_delimiter1).last;
       lyrics = lyrics.split(_delimiter2).first;
       if (lyrics.indexOf('<meta charset="UTF-8">') > -1) throw Error();
     } catch (_) {
       try {
         lyrics = (await http
-                .get(Uri.encodeFull('${_url}$artist $track song lyrics')))
+                .get(Uri.encodeFull('${_url}$track by $artist song lyrics')))
             .body;
         lyrics = lyrics.split(_delimiter1).last;
         lyrics = lyrics.split(_delimiter2).first;
         if (lyrics.indexOf('<meta charset="UTF-8">') > -1) throw Error();
       } catch (_) {
         try {
-          lyrics =
-              (await http.get(Uri.encodeFull('${_url}$track lyrics'))).body;
+          lyrics = (await http.get(Uri.encodeFull(
+                  '${_url}${track.split("-").first} by $artist lyrics')))
+              .body;
           lyrics = lyrics.split(_delimiter1).last;
           lyrics = lyrics.split(_delimiter2).first;
           if (lyrics.indexOf('<meta charset="UTF-8">') > -1) throw Error();
         } catch (_) {
-          try {
-            lyrics = (await http.get(Uri.encodeFull(
-                    '${_url}${track.split("-").first} $artist lyrics')))
-                .body;
-            lyrics = lyrics.split(_delimiter1).last;
-            lyrics = lyrics.split(_delimiter2).first;
-            if (lyrics.indexOf('<meta charset="UTF-8">') > -1) throw Error();
-          } catch (_) {
-            // give up
-            throw Exception("no lyrics found");
-          }
+          // give up
+          throw Exception("no lyrics found");
         }
       }
     }
