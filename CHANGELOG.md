@@ -1,3 +1,7 @@
+## [0.0.7] - 24 jul 2020
+
+- Updated dependencies
+
 ## [0.0.6] - 19 apr 2020
 
 - Improved algorithm

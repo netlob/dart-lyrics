@@ -1,6 +1,6 @@
 name: lyrics
 description: Fetch lyrics from Google
-version: 0.0.6
+version: 0.0.7
 homepage: https://github.com/netlob/dart-lyrics
 repository: https://github.com/netlob/dart-lyrics
 issue_tracker: https://github.com/netlob/dart-lyrics/issues
@@ -10,4 +10,4 @@ environment:
   sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
-  http:
+  http: ^0.13.3

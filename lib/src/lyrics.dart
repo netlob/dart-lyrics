@@ -25,16 +25,16 @@ class Lyrics {
 
     // try multiple queries
     try {
-      lyrics =
-          (await http.get(Uri.parse(Uri.encodeFull('${_url}$track by $artist lyrics'))))
-              .body;
+      lyrics = (await http.get(
+              Uri.parse(Uri.encodeFull('${_url}$track by $artist lyrics'))))
+          .body;
       lyrics = lyrics.split(_delimiter1).last;
       lyrics = lyrics.split(_delimiter2).first;
       if (lyrics.indexOf('<meta charset="UTF-8">') > -1) throw Error();
     } catch (_) {
       try {
-        lyrics = (await http
-                .get(Uri.parse(Uri.encodeFull('${_url}$track by $artist song lyrics'))))
+        lyrics = (await http.get(Uri.parse(
+                Uri.encodeFull('${_url}$track by $artist song lyrics'))))
             .body;
         lyrics = lyrics.split(_delimiter1).last;
         lyrics = lyrics.split(_delimiter2).first;
