@@ -12,12 +12,12 @@ class Lyrics {
     this.setDelimiters(delimiter1: delimiter1, delimiter2: delimiter2);
   }
 
-  void setDelimiters({String delimiter1, String delimiter2}) {
+  void setDelimiters({String? delimiter1, String? delimiter2}) {
     _delimiter1 = delimiter1 ?? _delimiter1;
     _delimiter2 = delimiter2 ?? _delimiter2;
   }
 
-  Future<String> getLyrics({String track, String artist}) async {
+  Future<String> getLyrics({String? track, String? artist}) async {
     if (track == null || artist == null)
       throw Exception("track and artist must not be null");
 
